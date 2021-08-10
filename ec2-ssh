@@ -11,8 +11,4 @@ select server in $(ec2-ls $TAG | column -t); do
 			ssh -o StrictHostKeyChecking=no -i ~/.ssh/$(echo $server | awk '{print $4}').pem root@$(echo $server | awk '{print $1}')
 	esac
 done
-#for host in $(ec2-ls $TAG | awk '{print $1}'); do
-#	echo -e "\n$host:\n" >&2
-#	ssh -o StrictHostKeyChecking=no -i ~/.ssh/awseast.pem root@$host "$@"
-#done
 
