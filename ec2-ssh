@@ -9,7 +9,7 @@ if [ -z "$USER" ]; then
 	USER=root
 fi
 
-select server in $(ec2-ls $TAG | column -t); do
+select server in $(ec2-ls $TAG); do
 	case $server in
 		*)
 			ssh -o StrictHostKeyChecking=no -i ~/.ssh/$(echo $server | awk '{print $4}').pem $USER@$(echo $server | awk '{print $1}')
